@@ -33,7 +33,6 @@ int main()
 			break;
 		case (FileInput):
 			herbivores = FileDataInput(); //Ввод данных об апартаментов из файла
-			ConsoleOutput(herbivores); //Вывод считанных данных на консоль
 			break;
 		}
 		std::cout << std::endl;

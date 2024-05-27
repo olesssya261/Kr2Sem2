@@ -22,7 +22,7 @@ std::string Herbivores::GetFullInformation()
 
 		return  _name +"\n" + _methodOfNutrition + "\n" + std::to_string(_weight) + "\n"+
 			  _livingEnvironment + "\n"+PoisonousToString() + "\n"+
-			 std::to_string(_averageLifeExpectancy) + "\n";
+			 std::to_string(_averageLifeExpectancy);
 }
 void Herbivores::ShowFullIformation()
 {

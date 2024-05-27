@@ -22,7 +22,7 @@ std::vector<Herbivores> FileDataInput()//Функция ввода списка квартир из фаила
 				std::cout << "Не верное разрешение у файла.Повторитие попытку. " << std::endl;
 				continue;
 			}
-			if (!std::filesystem::is_regular_file(fileName)) {//Проверка на системные фаилы
+			if (std::filesystem::is_regular_file(fileName)) {//Проверка на системные фаилы
 				file.open(fileName);
 				std::cout << "Фаил открыт успешно. " << std::endl;
 			}
@@ -53,12 +53,14 @@ std::vector<Herbivores> FileDataInput()//Функция ввода списка квартир из фаила
 		}
 		catch (const std::exception) {//Обработка ошибки
 			std::cout << "Произошла ошибка при чтении информации. Повторите попытку:" << std::endl;
-			
+			herbivores.clear();
+			file.close();//закрытие потока
 			continue;
 		}
 		catch (const CheckException err) {//Обработка ошибки пользовательского ввода  
 			std::cout << err.GetMessage() << std::endl;//Вывод сообщения об ошибки
-			
+			herbivores.clear();
+			file.close();//закрытие потока
 			continue;
 		}
 		file.close();//закрытие потока
