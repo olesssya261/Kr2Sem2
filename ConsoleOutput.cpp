@@ -9,10 +9,10 @@ void ConsoleOutput(std::vector<Herbivores> herbivores)
 	std::cout << "Количество животных:" << herbivores.size() << std::endl;
 	std::cout << "Список животных:" << std::endl;
 	int counter = 1;
-	for (auto i = herbivores.begin(); i < herbivores.end(); ++i)//Перебор вектора квартир при помощи итератора 
+	for (auto i = herbivores.begin(); i < herbivores.end(); ++i)//Перебор вектора травоядных при помощи итератора 
 	{
 		std::cout << "Животное №" << counter << ":" << std::endl;
-		i->ShowFullIformation();
+		i->ShowFullIformation(); // Вызов метода по указателю
 		counter++;
 	}
 }

@@ -13,7 +13,7 @@ public:
 private:
 	std::string message;//Поле хранящее сообщение об ошибке
 };
-void WriteApartments(std::vector<Herbivores> herbivores,std::string fileName)//Функция записи данных квартир в фаил
+void WriteHerbivores(std::vector<Herbivores> herbivores,std::string fileName)//Функция записи данных квартир в фаил
 {
 	std::ofstream  out;//Создания потока записи в фаил
 	out.exceptions(std::ofstream::badbit | std::ofstream::failbit);//Установка побитовых флагов ошибок фаилового взаимодействия
@@ -23,10 +23,10 @@ void WriteApartments(std::vector<Herbivores> herbivores,std::string fileName)//Ф
 		out << herbivores.size() << std::endl;//Запись кол-ва объектов в векторе
 		for (auto i = herbivores.begin(); i < herbivores.end(); ++i)//Перебор вектора квартир при помощи итератора
 		{
-			out << i->GetFullInformation() << std::endl;//Запись в фаил адреса
+			out << i->GetFullInformation() << std::endl;//Запись в файл адреса (достаём функцию по указателю, записываем в файл)
 		}
 		out.close();//закрытия потока
-		std::cout << "Данные успешно сохранены" << std::endl;
+		std::cout << "Данные успешно сохранены." << std::endl;
 	}
 	catch(const std::exception&)//Обработка ошибки
 	{
@@ -35,13 +35,13 @@ void WriteApartments(std::vector<Herbivores> herbivores,std::string fileName)//Ф
 }
 void FileOutput(std::vector<Herbivores> herbivores)
 {
-	std::ifstream out2;//Создания потока чтения из фаила
-	std::string fileName;//Переменная имени или пути фаила
+	std::ifstream out2;//Создания потока чтения из файла
+	std::string fileName;//Переменная имени или пути файла
 	out2.exceptions(std::ifstream::badbit | std::ifstream::failbit);//Установка побитовых флагов ошибок фаилового взаимодействия
 	int userChoice = 0;//Переменная пользовательского ввода
 	while (true) {
 		std::cout << "Введите имя фаила (в разрешении .txt): ";
-		std::cin >> fileName;//Ввод пути к фаилу
+		std::cin >> fileName;//Ввод пути к файлу
 		try {
 			if(fileName.find(".txt") == std::string::npos)//Поиск в имени фаила части .txt если указатель не указывает на элемент строки происходит повторный запрос
 			{
@@ -51,7 +51,7 @@ void FileOutput(std::vector<Herbivores> herbivores)
 			try
 			{
 				if (std::filesystem::is_regular_file(fileName)) {//Проверка на системные фаилы
-					std::cout << "Фаил с таким именем уже существует" << std::endl;
+					std::cout << "Файл с таким именем уже существует." << std::endl;
 				}
 
 			}
@@ -60,13 +60,13 @@ void FileOutput(std::vector<Herbivores> herbivores)
 				throw FileWriteException("Невозможно записать данные в файл. Повторите попытку.");//Выброс пользовательской ошибки фаилового вывода
 
 			}
-			out2.open(fileName);//Попытка открытия фаила
+			out2.open(fileName);//Попытка открытия файла
 			ShowOutputChoise();//Функция вывода на консоль выбора файла
 			userChoice = GetChoise();//Ввод пользовательского выбора
 			if (userChoice == Yes) {
 				
-				out2.close();//Закрытия потока чтения из фаила
-				WriteApartments(herbivores, fileName);//Функция записи в фаил
+				out2.close();//Закрытия потока чтения из файла
+				WriteHerbivores(herbivores, fileName);//Функция записи в файл
 			}
 			else {
 				out2.close();//Закрытия потока чтения из фаила
@@ -76,10 +76,10 @@ void FileOutput(std::vector<Herbivores> herbivores)
 		}
 		catch (const std::exception&) {
 			try {
-				WriteApartments(herbivores, fileName);//Функция записи в фаил
+				WriteHerbivores(herbivores, fileName);//Функция записи в файл
 				break;
 			}
-			catch ( FileWriteException err) {//Обработка ошибки взаимодействия с фаилом
+			catch ( FileWriteException err) {//Обработка ошибки взаимодействия с файлом
 				std::cout << err.getMessage() << std::endl;//Вывод сообщения об ошибки
 			}
 		}

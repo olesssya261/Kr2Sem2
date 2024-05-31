@@ -30,7 +30,7 @@ void Herbivores::ShowFullIformation()
 	std::cout << "Вес:" << _weight << std::endl;
 	std::cout << "Способ питания:" << _methodOfNutrition << std::endl;
 	std::cout << "Среда обитания:" << _livingEnvironment << std::endl;
-	std::cout << "Средняя продолжительность:" <<_averageLifeExpectancy << std::endl;
+	std::cout << "Средняя продолжительность жизни:" <<_averageLifeExpectancy << std::endl;
 	std::cout << "Ядовитость: " << PoisonousToString() << std::endl;
 	
 }

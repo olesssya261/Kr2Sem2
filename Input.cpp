@@ -21,18 +21,18 @@ std::vector<Herbivores> ConsoleIput()
 		std::cout << "Введите среду обитания животного:" << std::endl;
 		std::string livingEnvironment = GetString();//Ввод переменной среды обитания
 		std::cout << "Животное ядовито:" << std::endl;
-		std::cout << "1)Да" << std::endl;
-		std::cout << "2)Нет" << std::endl;
+		std::cout << "1) Да" << std::endl;
+		std::cout << "2) Нет" << std::endl;
 		bool poisonous = GetTrueOrFalse();//Ввод переменной ядовитости
 		std::cout << "Введите среднюю продолжительность жизни:" << std::endl;
 		int averageLifeExpectancy = GetPositiveIntMoreThen0();//Ввод переменной средней продолжительности жизни
 		Herbivores herbivore(methodOfNutrition,weight,livingEnvironment,name,poisonous,averageLifeExpectancy);//Создание объекта типа Herbivores
 		herbivores.push_back(herbivore);//Добавление в конец вектора обекта
 		std::cout << "Хотите добавить ещё животное"<<std::endl;
-		std::cout << "1)Да" << std::endl;
-		std::cout << "2)Нет" << std::endl;
+		std::cout << "1) Да" << std::endl;
+		std::cout << "2) Нет" << std::endl;
 		userChoice = GetChoise();//Ввод пользовательского решения
-		if(userChoice== Yes)
+		if(userChoice == Yes)
 		{
 			continue;
 		}

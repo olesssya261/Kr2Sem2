@@ -139,7 +139,7 @@
     <ClCompile Include="Herbivores.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Kr2Sem2.cpp" />
-    <ClCompile Include="Mammaks.cpp" />
+    <ClCompile Include="Mammals.cpp" />
     <ClCompile Include="PersonalIntface.cpp" />
   </ItemGroup>
   <ItemGroup>

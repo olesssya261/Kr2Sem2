@@ -14,19 +14,19 @@ void RemoveHerbivore(std::vector<Herbivores>& herbivores)//Функция удаления живо
 		std::cout << "Ввод: ";
 		int userChoice = GetPositiveIntMoreThen0();//Ввод индекса животного в списке
 		std::cout << std::endl;
-		if (herbivores.size() < userChoice) {//Проверка что индекс находится в пределах возможных
+		if (herbivores.size() <= userChoice) {//Проверка, что индекс находится в пределах возможного
 			std::cout<<"Животного под таким номером не существует. Повторите попытку" << std::endl;
 			continue;
 		}
-		auto iter = herbivores.cbegin(); // указатель на первый элемент
+		auto iter = herbivores.begin(); // указатель на первый элемент
 		herbivores.erase(iter + userChoice-1);//Удаление элемента из вектора с индексом userChoice
 		std::cout << "Животное под номером №"<< userChoice << " удалено"<< std::endl;
 		if (!herbivores.empty()) {//Проверка что вектор не пуст
 		std::cout << "Полученный список" << std::endl;
 		ConsoleOutput(herbivores);//Вывод отредактированного списка животных
 			std::cout << "Хотите удалить ещё животное?" << std::endl;
-			std::cout << "1)Да" << std::endl;
-			std::cout << "2)Нет" << std::endl;
+			std::cout << "1) Да" << std::endl;
+			std::cout << "2) Нет" << std::endl;
 			std::cout << "Ввод: ";
 			userChoice = GetChoise();//Ввод пользовательского выбора
 			std::cout << std::endl;
@@ -37,7 +37,7 @@ void RemoveHerbivore(std::vector<Herbivores>& herbivores)//Функция удаления живо
 		return;
 	}
 }
-void AddHerbivore(std::vector<Herbivores>& herbivores)//Функция добавления новых животных в список
+void AddHerbivore(std::vector<Herbivores>& herbivores)//Функция добавления новых животных в список (получаем вектор по указателю)
 {
 	std::vector<Herbivores> tmpHerbivores = ConsoleIput();//Ввод вектора добавляемых животных
 	herbivores.insert(herbivores.end(), tmpHerbivores.begin(), tmpHerbivores.end());//Соединение старого и нового вектора (новый вектор добавляется в конец)
@@ -49,12 +49,12 @@ void AddHerbivore(std::vector<Herbivores>& herbivores)//Функция добавления новых
 void ChangeHerbivore(std::vector<Herbivores>& herbivores)//Функция измений данных животных в списке
 {
 	while (true) {
-		std::cout << "Введите номер животного данные которого хотите редактировать" << std::endl;
+		std::cout << "Введите номер животного, данные которого хотите редактировать" << std::endl;
 		std::cout << "Ввод: ";
 		int userChoice = GetPositiveIntMoreThen0();//Ввод индекса животного в списке
 		std::cout << std::endl;
-		if (herbivores.size() < userChoice) {//Проверка что индекс находится в пределах возможных
-			std::cout << "Животного под таким номером не существует. Повторите попытку" << std::endl;
+		if (herbivores.size() <= userChoice) {//Проверка, что индекс находится в пределах возможного
+			std::cout << "Животного под таким номером не существует. Повторите попытку." << std::endl;
 			continue;
 		}
 		std::cout << "Введите название:" << std::endl;
@@ -66,8 +66,8 @@ void ChangeHerbivore(std::vector<Herbivores>& herbivores)//Функция измений данны
 		std::cout << "Введите среду обитания животного:" << std::endl;
 		herbivores[userChoice - 1].SetLivingEnvironment(GetString());//Ввод переменной среды обитания
 		std::cout << "Животное ядовито:" << std::endl;
-		std::cout << "1)Да" << std::endl;
-		std::cout << "2)Нет" << std::endl;
+		std::cout << "1) Да" << std::endl;
+		std::cout << "2) Нет" << std::endl;
 		herbivores[userChoice - 1].SetPoisonous(GetTrueOrFalse());//Ввод переменной ядовитости
 		std::cout << "Введите среднюю продолжительность жизни:" << std::endl;
 		herbivores[userChoice - 1].SetAverageLifeExpectancy(GetPositiveIntMoreThen0());//Ввод переменной средней продолжительности жизни
@@ -77,8 +77,8 @@ void ChangeHerbivore(std::vector<Herbivores>& herbivores)//Функция измений данны
 		ConsoleOutput(herbivores);//Вывод отредактированного списка животных
 		std::cout << std::endl;
 		std::cout << "Хотите изменить ещё животное?" << std::endl;
-		std::cout << "1)Да" << std::endl;
-		std::cout << "2)Нет" << std::endl;
+		std::cout << "1) Да" << std::endl;
+		std::cout << "2) Нет" << std::endl;
 		std::cout << "Ввод: ";
 		userChoice = GetChoise();//Ввод пользовательского выбора
 		std::cout << std::endl;

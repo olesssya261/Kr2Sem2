@@ -55,7 +55,7 @@ bool isalpharus(char c)//Функция проверки на русские б�
 {
     return (c >= 'А' && c <= 'я') || c == 'Ё' || c == 'ё';
 }
-//Коментарии см. функцию ввода адреса
+
 std::string CheckLineS(std::ifstream& file)
 {
     std::string temp_s = "";
@@ -75,9 +75,9 @@ std::string CheckLineS(std::ifstream& file)
         }
         for (int i = 1; i < temp_s.size(); i++)//Цикл по i от 2го символа до конца строки
         {
-            if (!isalpharus(temp_s[i]) && !isdigit(temp_s[i]) && temp_s[i] != '.' && temp_s[i] != ',' && temp_s[i] != '-' && temp_s[i] != ' ' && temp_s[i] != '/')
+            if (!isalpharus(temp_s[i]) && temp_s[i] != '.' && temp_s[i] != ',' && temp_s[i] != '-' && temp_s[i] != ' ' && temp_s[i] != '/')//Если символ не русская буква,точка, запятая, пробел и тире
             {
-                throw std::exception();
+                throw std::exception();//Выброс ошибки
             }
             if (temp_s[i] == '.' && temp_s[i - 1] == '.')//Если две точки идут подряд
             {
@@ -106,7 +106,7 @@ std::string CheckLineS(std::ifstream& file)
     }
     catch (const std::exception&)
     {
-        throw CheckException("Произошла ошибка при чтении информации из фаила");
+        throw CheckException("Произошла ошибка при чтении информации из файла.");
     }
 }
 
@@ -226,13 +226,13 @@ bool CheckLineB(std::ifstream& file)
     }
     catch (const std::exception&)//Обработка ошибки
     {
-        throw CheckException("Произошла ошибка при чтении информации из фаила");//Выброс ошибки пользовательского типа
+        throw CheckException("Произошла ошибка при чтении информации из файла.");//Выброс ошибки пользовательского типа
     }
 }
 bool GetTrueOrFalse()
 {
     int choise = GetChoise();
-    if(choise==1)
+    if(choise == 1)
     {
         return true;
     }

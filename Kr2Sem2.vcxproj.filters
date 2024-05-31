@@ -36,7 +36,7 @@
     <ClCompile Include="Input.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="Mammaks.cpp">
+    <ClCompile Include="Mammals.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
     <ClCompile Include="PersonalIntface.cpp">

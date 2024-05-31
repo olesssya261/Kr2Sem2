@@ -2,7 +2,7 @@
 #include <windows.h>//Библеотека ответственная за русскую локализацию консоли
 #include <conio.h>//Библеотека ответственная за функцию getch
 #include <vector>//Библеотека подключения вектора
-#include "Herbivores.h"//Подключение HeaderFile с классом Apartment
+#include "Herbivores.h"//Подключение HeaderFile с классом Herbivore
 #include "MainMenu.h"//Подключение HeaderFile с Enum-меню
 #include "Checks.h"//Подключение HeaderFile с проверками пользовательского ввода
 #include "ConsoleOutput.h"//Подключение HeaderFile с выводом списка животных на консоль
