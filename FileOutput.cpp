@@ -33,19 +33,22 @@ void WriteHerbivores(std::vector<Herbivores> herbivores,std::string fileName)//Ф
 		throw FileWriteException("Невозможно записать данные в файл. Повторите попытку.");//Выброс пользовательской ошибки фаилового вывода
 	}
 }
+
+
 void FileOutput(std::vector<Herbivores> herbivores)
 {
 	std::ifstream out2;//Создания потока чтения из файла
 	std::string fileName;//Переменная имени или пути файла
 	out2.exceptions(std::ifstream::badbit | std::ifstream::failbit);//Установка побитовых флагов ошибок фаилового взаимодействия
 	int userChoice = 0;//Переменная пользовательского ввода
+
 	while (true) {
 		std::cout << "Введите имя фаила (в разрешении .txt): ";
 		std::cin >> fileName;//Ввод пути к файлу
 		try {
-			if(fileName.find(".txt") == std::string::npos)//Поиск в имени фаила части .txt если указатель не указывает на элемент строки происходит повторный запрос
+			if(fileName.find(".txt") == std::string::npos )//Поиск в имени фаила части .txt если указатель не указывает на элемент строки происходит повторный запрос
 			{
-				std::cout << "Не верное разрешение у файла.Повторитие попытку. "<<std::endl;
+				std::cout << "Не верное разрешение у файла или файл не существует. Повторитие попытку. "<<std::endl;
 				continue;
 			}
 			try

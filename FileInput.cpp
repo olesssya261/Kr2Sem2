@@ -15,6 +15,8 @@ std::vector<Herbivores> FileDataInput()//Функция ввода списка квартир из фаила
 	{
 		std::cout << "Введите имя фаила (в разрешении .txt): " << std::endl;
 		std::cin >> fileName;//Ввод пути к файлу
+
+		
 		try
 		{
 			if (fileName.find(".txt") == std::string::npos)//Поиск в имени фаила части .txt, если указатель не указывает на элемент строки, происходит повторный запрос
@@ -22,14 +24,14 @@ std::vector<Herbivores> FileDataInput()//Функция ввода списка квартир из фаила
 				std::cout << "Не верное разрешение у файла. Повторитие попытку. " << std::endl;
 				continue;
 			}
+			file.open(fileName);
 			if (std::filesystem::is_regular_file(fileName)) { //Проверка на системные фаилы
-				file.open(fileName);
 				std::cout << "Фаил открыт успешно. " << std::endl;
 			}
 		}
 		catch (const std::exception&)//Обработка ошибки при чтении из файла
 		{
-			std::cout << " Произошла ошибка при открытии фаила.Повторите попытку:" << std::endl;
+			std::cout << " Произошла ошибка при открытии файла. Повторите попытку:" << std::endl;
 			continue;
 
 		}
